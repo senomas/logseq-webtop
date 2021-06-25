@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  webtop:
+    image: ghcr.io/linuxserver/webtop:ubuntu-mate
+    container_name: webtop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/jakarta
+      - VIRTUAL_HOST=code.senomas.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=logseq.senomas.com
+      - LETSENCRYPT_EMAIL=agus@senomas.com
+    volumes:
+      - ./data:/config
+    ports:
+      - 3000:3000
+    shm_size: "1gb"
+    restart: unless-stopped
