@@ -8,13 +8,16 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/jakarta
-      - VIRTUAL_HOST=code.senomas.com
+      - VIRTUAL_HOST=logseq.senomas.com
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=logseq.senomas.com
       - LETSENCRYPT_EMAIL=agus@senomas.com
     volumes:
       - ./data:/config
-    ports:
-      - 3000:3000
     shm_size: "1gb"
     restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: docknet
